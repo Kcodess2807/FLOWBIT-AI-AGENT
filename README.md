@@ -56,7 +56,7 @@ The Learned Memory system sits on top of invoice extraction to provide intellige
 
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone (https://github.com/Kcodess2807/FLOWBIT-AI-AGENT.git)
 cd learned-memory
 
 # Install dependencies

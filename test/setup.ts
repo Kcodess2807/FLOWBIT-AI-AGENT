@@ -1,6 +1,4 @@
-/**
- * Test setup and configuration
- */
+// Test setup and configuration
 
 import Database from 'better-sqlite3';
 import { initializeDatabase } from '../src/repository/database.js';
@@ -13,35 +11,27 @@ export const testConfig = {
   testDataPath: './test/fixtures/',
 };
 
-/**
- * Create an in-memory database for testing
- */
+// Utility functions for tests
 export function createTestDatabase(): Database.Database {
   // initializeDatabase returns a Database instance when given ':memory:'
   return initializeDatabase(':memory:');
 }
 
-/**
- * Create a test repository with in-memory database
- */
+
 export function createTestRepository(): { db: Database.Database; repository: MemoryRepository } {
   const db = createTestDatabase();
   const repository = new MemoryRepository(db);
   return { db, repository };
 }
 
-/**
- * Create a test processor with in-memory database
- */
+// Create a test invoice processor with in-memory repository
 export function createTestProcessor(): { db: Database.Database; repository: MemoryRepository; processor: InvoiceProcessor } {
   const { db, repository } = createTestRepository();
   const processor = new InvoiceProcessor(repository);
   return { db, repository, processor };
 }
 
-/**
- * Clean up test database
- */
+// Cleanup function to close database connections
 export function cleanupTestDatabase(db: Database.Database): void {
   db.close();
 }
